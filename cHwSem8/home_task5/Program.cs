@@ -14,24 +14,54 @@ MyGenerate gen = new MyGenerate();
 
 int sizeRows = IntInput("Введите число строк в массиве");
 int sizeColumns = IntInput("Введите число столбцов в массиве");
-
+int startX = 1;
+int startY = 1;
 int[,] usersArray = new int[sizeRows,sizeColumns];
 Print(usersArray);
 
 int[,] baseArray = MkBaseArrayFrom(usersArray);
 Print(baseArray);
+if (baseArray.GetLength(0)%2 != 0 && baseArray.GetLength(1)%2 != 0){
+    startX = baseArray.GetLength(0)/2;
+    startY = baseArray.GetLength(1)/2;
+}
 
-int[,] spiral = SpiralArray(baseArray,1,1,1,1);
+int[,] spiral = SpiralArray(baseArray,startX,startY,1, 1);
 Print(spiral);
 
 
 int[,] SpiralArray (int[,] baseArray, int startX, int startY, int startValue, int direction){
     //int element = startValue;
-    if (startX<baseArray.GetLength(0) && startY<baseArray.GetLength(1) && baseArray[startX,startY] == 0){
+    if (/* startX<baseArray.GetLength(0) && startY<baseArray.GetLength(1) && */ baseArray[startX,startY] == 0){
         baseArray[startX,startY] = startValue;
         startValue++;
-
-    
+        if (direction == 1 && baseArray[startX,startY+1] == 0){
+            direction = 1;
+        } else if (direction == 1 && baseArray[startX,startY+1] != 0){
+            direction = 2;
+        } else if (direction == 2 && baseArray[startX+1,startY] == 0){
+            direction = 2;
+        } else if (direction == 2 && baseArray[startX+1,startY] != 0){
+            direction = 3;
+        } else if (direction == 3 && baseArray[startX,startY-1] == 0){
+            direction = 3;
+        } else if (direction == 3 && baseArray[startX,startY-1] != 0){
+            direction = 4;
+        } else if (direction == 4 && baseArray[startX-1,startY] == 0){
+            direction = 4;
+        } else if (direction == 4 && baseArray[startX+1,startY] != 0){
+            direction = 1;
+        }
+    switch (direction){
+        case 1: // right
+            return SpiralArray(baseArray, startX, startY+1, startValue, 1);
+        case 2: // down
+            return SpiralArray(baseArray, startX+1, startY, startValue, 2);
+        case 3: // left
+            return SpiralArray(baseArray, startX, startY-1, startValue, 3);
+        case 4: // up
+            return SpiralArray(baseArray, startX-1, startY, startValue, 4);
+    }
 
     }
 
