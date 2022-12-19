@@ -13,7 +13,11 @@ Random rnd = new Random();
 26(1,0,1) 55(1,1,1)
 */
 
-int[,,] ArrayGenDI()
+int[,,] myArr = ArrayGenTI();
+Print(myArr);
+
+
+int[,,] ArrayGenTI()
     {
         int rows = IntInput("число строк");
         int columns = IntInput("число столбцов");
@@ -48,4 +52,18 @@ int[,,] ArrayGenDI()
             }  
         }
         return true;
+    }
+
+    void Print (int[,,] usersArray){
+        for (int i = 0; i < usersArray.GetLength(0); i++)
+        {
+            for (int j= 0; j < usersArray.GetLength(1); j++){
+                for (int k= 0; k < usersArray.GetLength(2); k++){
+                    Console.Write($"| {usersArray[i,j,k]} ({i},{j},{k}) |");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();  
+        }
+        Console.WriteLine();
     }
