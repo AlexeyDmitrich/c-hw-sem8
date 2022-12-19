@@ -14,3 +14,9 @@ MyGenerate gen = new MyGenerate();
 15 18
 */
 
+int[,] matrix1 = gen.ArrayGenDI();
+int[,] matrix2 = gen.ArrayGenDI();
+
+int[,] MatrixProduct (int[,] matrix1, int[,] mateix2){
+
+}
