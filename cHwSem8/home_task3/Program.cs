@@ -18,5 +18,16 @@ int[,] matrix1 = gen.ArrayGenDI();
 int[,] matrix2 = gen.ArrayGenDI();
 
 int[,] MatrixProduct (int[,] matrix1, int[,] mateix2){
-
+    int[,] product = new int[matrix1.GetLength(0),matrix2.GetLength(1)];
+    for (int i=0; i<product.GetLength(0); i++){
+        for (int j=0; i<product.GetLength(1); j++){
+            for (int k=0; k<matrix1.GetLength(0); k++){
+                for (int l=0; l<matrix2.GetLength(1); l++){
+                    product[i,j]=matrix1[i,k]*matrix2[j,l];
+                }
+            }
+        }
+    }
 }
+
+
