@@ -28,9 +28,17 @@ int[,] SortedArrayByRaw (int[,] usersArray){
         int temp = 0;
         for (int j = 0; j < usersArray.GetLength(1)-1; j++){
             if (usersArray[i,j] < usersArray[i,j+1]){
-                temp = usersArray[i,j];
-                usersArray[i,j] = usersArray[i,j+1];
-                usersArray[i,j+1] = temp;
+                temp = usersArray[i,j+1];
+                usersArray[i,j+1] = usersArray[i,j];
+                usersArray[i,j] = temp;
+                j=0;
+            }
+        }
+        for (int j = 0; j < usersArray.GetLength(1)-1; j++){
+            if (usersArray[i,j] < usersArray[i,j+1]){
+                temp = usersArray[i,j+1];
+                usersArray[i,j+1] = usersArray[i,j];
+                usersArray[i,j] = temp;
                 j=0;
             }
         }
