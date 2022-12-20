@@ -17,17 +17,28 @@ MyGenerate gen = new MyGenerate();
 int[,] matrix1 = gen.ArrayGenDI();
 int[,] matrix2 = gen.ArrayGenDI();
 
+int[,] productMatrix = MatrixProduct(matrix1,matrix2);
+Print(" -----------");
+Print(matrix1);
+Print("      *     ");
+Print(matrix2);
+Print(" ===========");
+Print(productMatrix);
+
 int[,] MatrixProduct (int[,] matrix1, int[,] mateix2){
     int[,] product = new int[matrix1.GetLength(0),matrix2.GetLength(1)];
     for (int i=0; i<product.GetLength(0); i++){
-        for (int j=0; i<product.GetLength(1); j++){
-            for (int k=0; k<matrix1.GetLength(0); k++){
-                for (int l=0; l<matrix2.GetLength(1); l++){
-                    product[i,j]+= matrix1[i,k]*matrix2[j,l];
-                }
+//        Print($"i = {i}");
+        for (int j=0; j<matrix1.GetLength(1); j++){
+//            Print($"j = {j}");
+            for (int k=0; k<matrix2.GetLength(0); k++){
+//                Print($"k = {k}");
+                product[i,j]+= matrix1[i,j]*matrix2[k,i];
+//                Print($"product[{i},{j}] += matrix1[{i},{j}]*matrix2[{k},{i}]");
             }
         }
     }
+    return product;
 }
 
 
