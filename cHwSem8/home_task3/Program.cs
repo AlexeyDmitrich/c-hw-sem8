@@ -15,6 +15,7 @@ MyGenerate gen = new MyGenerate();
 */
 
 int[,] matrix1 = gen.ArrayGenDI();
+Print(matrix1);
 int[,] matrix2 = gen.ArrayGenDI();
 
 int[,] productMatrix = MatrixProduct(matrix1,matrix2);
@@ -25,8 +26,9 @@ Print(matrix2);
 Print(" ===========");
 Print(productMatrix);
 
-int[,] MatrixProduct (int[,] matrix1, int[,] mateix2){
+int[,] MatrixProduct (int[,] matrix1, int[,] matrix2){
     int[,] product = new int[matrix1.GetLength(0),matrix2.GetLength(1)];
+    Print("arr created");
     for (int i=0; i<product.GetLength(0); i++){
 //        Print($"i = {i}");
         for (int j=0; j<matrix1.GetLength(1); j++){
